@@ -1,165 +1,157 @@
-(async () => {
-  try {
-    const chalk = await import("chalk");
-    const { makeWASocket } = await import("@whiskeysockets/baileys");
-    const qrcode = await import("qrcode-terminal");
-    const fs = await import('fs');
-    const pino = await import('pino');
-    const { green, red, yellow } = chalk.default; // Destructure the colors
-    const {
-      delay,
-      useMultiFileAuthState,
-      BufferJSON,
-      fetchLatestBaileysVersion,
-      PHONENUMBER_MCC,
-      DisconnectReason,
-      makeInMemoryStore,
-      jidNormalizedUser,
-      Browsers,
-      makeCacheableSignalKeyStore
-    } = await import("@whiskeysockets/baileys");
-    const Pino = await import("pino");
-    const NodeCache = await import("node-cache");
-    console.log(yellow(`
-    
- _______   _______                      
-/       \ /       \                     
-$$$$$$$  |$$$$$$$  |                    
-$$ |__$$ |$$ |__$$ |                    
-$$    $$< $$    $$<                     
-$$$$$$$  |$$$$$$$  |                    
-$$ |  $$ |$$ |__$$ |                    
-$$ |  $$ |$$    $$/                     
-$$/   $$/ $$$$$$$/                      
-                                        
-                                        
-                                        
- __    __   ______    ______   _______  
-/  |  /  | /      \  /      \ /       \ 
-$$ |  $$ |/$$$$$$  |/$$$$$$  |$$$$$$$  |
-$$ |__$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
-$$    $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
-$$$$$$$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
-$$ |  $$ |$$ \__$$ |$$ \__$$ |$$ |__$$ |
-$$ |  $$ |$$    $$/ $$    $$/ $$    $$/ 
-$$/   $$/  $$$$$$/   $$$$$$/  $$$$$$$/
-======================================================================                                                              
-                                       WHATSAAAP LOADER MADE BY - BROTHER HOOD                       
-======================================================================                                                             
+import os,requests,time
+import requests,os,sys
+from concurrent.futures import ThreadPoolExecutor as ThreadPool  
 
-    `));
-    const phoneNumber = "+91***********";
-    const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code");
-    const useMobile = process.argv.includes("--mobile");
+try:
+	import requests
+except ModuleNotFoundError:
+	os.system('pip insta requests')
+	import requests
+import requests,os,sys,random
+try:
+	import requests
+except ModuleNotFoundError:
+	os.system("pip install requests")
+	import requests
 
-    const rl = (await import("readline")).createInterface({ input: process.stdin, output: process.stdout });
-    const question = (text) => new Promise((resolve) => rl.question(text, resolve));
+b="\033[1;34m"#----------𝗯𝗹𝘂𝗲
+bl="\033[1;30m"#--------𝗯𝗹𝗮𝗰𝗸
+c="\033[1;36m"#----------𝗰𝘆𝗮𝗻
+g="\033[1;32m"#----------𝗴𝗿𝗲𝗲𝗻
+p="\033[1;35m"#----------𝗽𝘂𝗿𝗽𝗹𝗲
+r="\033[1;31m"#----------𝗿𝗲𝗱
+y="\033[1;33m"#----------𝘆𝗲𝗹𝗹𝗼𝘄
+w="\033[1;37m"#----------𝘄𝗵𝗶𝘁𝗲 {𝗲𝗻𝗱}
+S = '\033[1;37m';A = '\x1b[38;5;208m';R = '\x1b[38;5;46m';F = '\x1b[38;5;48m';Z = '\033[1;33m';A = '\x1b[1;97m';R = '\x1b[38;5;196m';Y = '\033[1;33m';G = '\x1b[38;5;48m';h = '\x1b[38;5;48m';B = '\x1b[38;5;8m';G1 = '\x1b[38;5;46m';G2 = '\x1b[38;5;47m';G3 = '\x1b[38;5;48m';G4 = '\x1b[38;5;49m';G5 = '\x1b[38;5;50m';X = '\33[1;34m';X1 = '\x1b[38;5;14m';X2 = '\x1b[38;5;123m';X3 = '\x1b[38;5;122m';X4 = '\x1b[38;5;86m';X5 = '\x1b[38;5;121m';S = '\x1b[1;96m';W = '\x1b[38;5;196m';hh = '\033[34;1m'
+import requests,os,sys
+from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
-    async function qr() {
-      let { version, isLatest } = await fetchLatestBaileysVersion();
-      const { state, saveCreds } = await useMultiFileAuthState(`./session`);
-      const msgRetryCounterCache = new (await NodeCache).default();
+try:
+    import requests
+except:
+    os.system("pip install requests")
+    import requests 
 
-      const MznKing = makeWASocket({
-        logger: (await pino).default({ level: 'silent' }),
-        printQRInTerminal: !pairingCode,
-        mobile: useMobile,
-        browser: Browsers.macOS("Safari"),
-        auth: {
-          creds: state.creds,
-          keys: makeCacheableSignalKeyStore(state.keys, (await Pino).default({ level: "fatal" }).child({ level: "fatal" })),
-        },
-        markOnlineOnConnect: true,
-        generateHighQualityLinkPreview: true,
-        getMessage: async (key) => {
-          let jid = jidNormalizedUser(key.remoteJid);
-          let msg = await store.loadMessage(jid, key.id);
-          return msg?.message || "";
-        },
-        msgRetryCounterCache,
-        defaultQueryTimeoutMs: undefined,
-      });
+  
 
-      if (pairingCode && !MznKing.authState.creds.registered) {
-        if (useMobile) throw new Error('Cannot use pairing code with mobile api');
+os.system('clear')
+name = input(f"{R}[{G1}+{R}]{G1} ENTER YOUR NAME : ").upper()
+logo = f"""
+{G1}
+ 
 
-        let phoneNumber;
-        if (!!phoneNumber) {
-          phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+__________  ______________
+   / ____/ __ \/  _/  _/ ____/
+  / __/ / /_/ // / / // /     
+ / /___/ _, _// /_/ // /___   
+/_____/_/ |_/___/___/\____/     
+                                                         
+{R}[{G1}+{R}]{G1}Decode{G1}━{R}>{G1}Marshal.Zlib.Decompress.Base64.B64decode
+{R}[{G1}+{R}]{G1}Yourname{G1}━{R}>{G1}{name}
+"""
+def main_dec():
+	os.system('clear')
+	print(logo)
+	try:
+		open("/data/data/com.termux/files/usr/bin/pycdc")
+		open("/data/data/com.termux/files/usr/lib/python3.11/minopyc.py", "r").read()
+		open("/data/data/com.termux/files/usr/bin/pycdas")
+	except:
+		os.system("curl -O https://raw.githubusercontent.com/i4mMino/pycdc/main/pycdc")
+		os.system("curl -O https://raw.githubusercontent.com/i4mMino/pycdc/main/pycdas")
+		os.system("curl -O https://raw.githubusercontent.com/i4mMino/pycdc/main/minopyc.py")
+		os.system("mv pycdc /data/data/com.termux/files/usr/bin/")
+		os.system("mv pycdas /data/data/com.termux/files/usr/bin/")
+		os.system("mv minopyc.py /data/data/com.termux/files/usr/lib/python3.11/")
+		os.system("chmod 777 /data/data/com.termux/files/usr/lib/python3.11/minopyc.py")
+		os.system("chmod 777 /data/data/com.termux/files/usr/bin/pycdc")
+		os.system("chmod 777 /data/data/com.termux/files/usr/bin/pycdas")
+	try:
+		file=input(f"{R}[{G1}+{R}]{G1} INPUT YOUR FILE : ")
+		open(file)
+		os.system(f"cp {file} .b.py")
+	except:
+		exit('Nawaka Hallaya')
+	try:
+		open(file).read()
+	except:
+		os.system(f"pycdc .b.py > .a.py")
+		files = open(".a.py", "r").read()
+		if "exec(str(chr" in files:
+			c= files.split(']')[0]+"]\nprint(''.join([chr(i) for i in _]))"
+			files = open(".a.py", "w").write(c)
+			os.system("python3 .a.py > .b.py")
+		else:
+			os.system("mv .a.py .b.py")
+			pass
+	print(f'{R}[{G1}+{R}]{G1} PLEASE WAIT I WILL TRYING TO DECODING')
+	while True:
+		file = open(".b.py", "r").read()
+		if "(__import__('marshal').loads(__import__('zlib').decompress(__import__('base64').b64decode(b" in file:
+			filer = file.split("exec(")[1]
+			open(".b.py", "w").write("import minopyc,marshal\ncode =("+filer+"\nminopyc.dump_to_pyc(code, '.a.py')")
+			os.system("python3 .b.py;pycdc .a.py > .b.py")
+		elif "(__import__('marshal').loads(__import__('marshal').loads(__import__('marshal').loads(" in file:
+			filer = file.split("exec(")[1]
+			open(".b.py", "w").write("import minopyc,marshal\ncode =("+filer+"\nminopyc.dump_to_pyc(code, '.a.py')")
+			os.system("python3 .b.py;pycdc .a.py > .b.py")
+		elif "exec(_(" in file:
+			
+			c= file.split('exec(_(')[1]
+			l = ("import marshal,zlib,base64,minopyc\nx = (("+c+"\ny = x[:: -1]\nb = marshal.loads(zlib.decompress(base64.b64decode(y)))\nminopyc.dump_to_pyc(b,'.a.py') ")
+			open(".b.py","w").write(l)
+			os.system("python .b.py")
+			os.system("pycdc .a.py > .b.py")
+		elif "exec((_)(" in file:
+			c= file.split('exec((_)(')[1]
+			l = ("import marshal,zlib,base64,minopyc\nx = (("+c+"\ny = x[:: -1]\nb = marshal.loads(zlib.decompress(base64.b64decode(y)))\nminopyc.dump_to_pyc(b,'.a.py') ")
+			open(".b.py","w").write(l)
+			os.system("python .b.py")
+			os.system("pycdc .a.py > .b.py")
+		elif "exec(marshal.loads" in file:
+			filer = file.replace("exec(", "code=(")
+			open(".b.py", "w").write("import minopyc,marshal\n"+filer+"\nminopyc.dump_to_pyc(code, '.a.py')")
+			os.system("python3 .b.py;pycdc .a.py > .b.py")
+		elif "exec((lambda __," in file:
+			filer = file.replace("exec(", "print(")
+			open(".a.py", "w").write(filer)
+			os.system("python2 .a.py > .b.py")
+		else:
+			c= open(".b.py","r").read()
+			if c == '':
+				print(f'{R}[{G1}+{R}]{G1}THE TOOL CAN JUST DECODED DATA')
+				save=input(f"{R}[{G1}+{R}]{G1}ENTER PATH TO SAVE FROM : ")
+				os.system(f"pycdas .a.py > {save}")
+				os.system("rm .a.py;rm .b.py")
+			elif "WARNING: Decompyle incomplete" in c:
+				print(f'{R}[{G1}+{R}]{G1}THE TOOL CAN JUST DECODED DATA')
+				save=input(f"{R}[{G1}+{R}]{G1}ENTER PATH TO SAVE FROM : ")
+				os.system(f"pycdas .a.py > {save}")
+			else:
+				print(f'{R}[{G1}+{R}]{G1}THE TOOL DECODED')
+				save=input(f"{R}[{G1}+{R}]{G1}ENTER PATH TO SAVE FROM : ")
+				open(save, "w").write(c)
+				break
+			break
+	try:
+		open(".a.py")
+		os.system("rm .a.py")
+		try:
+			open(".b.py")
+			os.system("rm .b.py")
+		except:pass
+	except:pass
+	exit(f"{R}[{G1}+{R}]{G1}DECODE DONE🤑🤑Kalyan mitro")
+def contact_admin():
+	os.system('xdg-open https://chat.whatsapp.com/JoqwV7fWlulAM8kXvYMHWB/')
 
-          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            console.log(chalk.default.bgBlack(chalk.default.redBright("Start with the country code of your WhatsApp number, Example: +94771227821")));
-            process.exit(0);
-          }
-        } else {
-          console.log(yellow("==================================="));
-          phoneNumber = await question(chalk.default.bgBlack(chalk.default.greenBright(`ENTER YOUR COUNTRY CODE + PHONE NUMBER : `)));
-          phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+app = ('''
 
-          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            console.log(chalk.default.bgBlack(chalk.default.redBright("ENTER YOUR COUNTRY CODE + PHONE NUMBER : ")));
-
-            phoneNumber = await question(chalk.default.bgBlack(chalk.default.greenBright(`Please Enter Valid Number... !! Like 91******** : `)));
-            phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
-            rl.close();
-          }
-        }
-
-        setTimeout(async () => {
-          let code = await MznKing.requestPairingCode(phoneNumber);
-          code = code?.match(/.{1,4}/g)?.join("-") || code;
-          console.log(yellow("==================================="));
-          console.log(chalk.default.black(chalk.default.bgGreen(`THIS IS YOUR LOGIN CODE : `)), chalk.default.black(chalk.default.cyan(code)));
-        }, 3000);
-      }
-      
-      MznKing.ev.on("connection.update", async (s) => {
-        const { connection, lastDisconnect } = s;
-        if (connection == "open") {
-          console.log(yellow("YOUR WHATSAPP SUCCESSFULLY LOGIN DEAR USER"));
-
-          // Prompt the user to enter the target number and message
-          console.log(yellow("==================================="));
-          const targetNumber = await question(chalk.default.bgBlack(chalk.default.greenBright(`ENTER YOUR TARGET NUMBER : `)));
-          console.log(yellow("==================================="));
-          const message = await question(chalk.default.bgBlack(chalk.default.greenBright(`ENTER YOUR MESSAGE WHAT YOU WANT TO SEND : `)));
-          console.log(yellow("==================================="));
-          const delaySeconds = await question(green(`ENTER YOUR DELAY OF SECONDS : `));
-          console.log(yellow("==================================="));
-           
-          // Infinite message sending
-          const sendMessageInfinite = async () => {
-            await MznKing.sendMessage(targetNumber + '@c.us', { text: message });
-            console.log(green(`===================================\n YOUR MESSAGE IS :- ${message}\n =======================================\n YOUR TARGET NO. IS ${targetNumber} \n ==============================\n YOUR TIME AFTER SENDING MESSAGE IS ${delaySeconds}\n`));
-            setTimeout(sendMessageInfinite, delaySeconds * 1000); // Milliseconds mein convert kiya
-          };
-          sendMessageInfinite();
-        }
-        if (
-          connection === "close" &&
-          lastDisconnect &&
-          lastDisconnect.error &&
-          lastDisconnect.error.output.statusCode != 401
-        ) {
-          qr();
-        }
-      });
-      MznKing.ev.on('creds.update', saveCreds);
-      MznKing.ev.on("messages.upsert", () => { });
-    }
-
-    qr();
-
-    process.on('uncaughtException', function (err) {
-      let e = String(err);
-      if (e.includes("Socket connection timeout")) return;
-      if (e.includes("rate-overlimit")) return;
-      if (e.includes("Connection Closed")) return;
-      if (e.includes("Timed Out")) return;
-      if (e.includes("Value not found")) return;
-      console.log('Caught exception: ', err);
-    });
-  } catch (error) {
-    console.error("Error importing modules:", error);
-  }
-})();
+     __________  ______________
+   / ____/ __ \/  _/  _/ ____/
+  / __/ / /_/ // / / // /     
+ / /___/ _, _// /_/ // /___   
+/_____/_/ |_/___/___/\____/
+                                                    
+''')
+main_dec()
